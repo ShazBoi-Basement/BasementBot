@@ -9,7 +9,28 @@ import io
 TOKEN=str(open("bot.token","r").readline()).replace("\n","")
 prev = 366405
 
+CHANNEL = None
+
 client = discord.Client()
+
+async def backtask():
+
+        global CHANNEL
+        message=CHANNEL
+        while(1):
+
+            prev=366405
+            res = requests.get('https://www.osmania.ac.in/examination-results.php')
+
+            if len(res)!=prev:
+                prev=len(res)
+                await message.send(f"Results aagaye I guess <@&874319527167545344>")
+            
+
+            time.sleep(600)
+
+            
+
 
 
 def system_call(command):
@@ -23,11 +44,17 @@ def system_call(command):
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
     activity = discord.Game(name="Suffering with exam result")
+    client.loop.create_task(backtask())
+
+    
 
 
 @client.event
 async def on_message(message):
-    global prev
+    global prev,CHANNEL
+
+    if(message.content.startswith("cmd?")):
+        CHANNEL = message.CHANNEL
 
 
     if(message.content.startswith("cmd?")):
@@ -58,6 +85,7 @@ async def on_message(message):
             elif len(res)==prev:
                 await message.add_reaction("🔎")
                 await message.channel.send(f"Take it easy. Results nahi aaye {message.author.mention}")
-
+    
+    
 
 client.run(TOKEN)
