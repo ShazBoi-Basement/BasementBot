@@ -6,13 +6,9 @@ import subprocess
 import time
 import io
 
-<<<<<<< HEAD
 TOKEN=str(open("bot.token","r").readline()).replace("\n","")
 prev = 366405
-=======
-TOKEN="TOKEN"
 
->>>>>>> c249cbdcfff47ce38cf15f5b008751739e1a327d
 client = discord.Client()
 
 
@@ -32,8 +28,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global prev
-    res = requests.get('https://www.osmania.ac.in/examination-results.php').text
-    
+
+
     if(message.content.startswith("cmd?")):
         print("Entering Command Shell bash")
         if("rm" in message.content or "nano" in message.content or "apt" in message.content or "bot.token" in message.content):
@@ -51,14 +47,17 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('results?') and len(res)!=prev:
-        await message.add_reaction("🔎")
-        await message.channel.send(f"Results are out I guess..Check! <@&874319527167545344>")
-        return
+    if message.content.startswith('results?'):
+            res = requests.get('https://www.osmania.ac.in/examination-results.php').text
+            if(len(res)!=prev):
 
-    elif message.content.startswith('results?') and len(res)==prev:
-        await message.add_reaction("🔎")
-        await message.channel.send(f"Take it easy. Results nahi aaye {message.author.mention}")
+                await message.add_reaction("🔎")
+                await message.channel.send(f"Results are out I guess..Check! <@&874319527167545344>")
+                return
+
+            elif len(res)==prev:
+                await message.add_reaction("🔎")
+                await message.channel.send(f"Take it easy. Results nahi aaye {message.author.mention}")
 
 
 client.run(TOKEN)
