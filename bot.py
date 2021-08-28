@@ -13,6 +13,7 @@ CHANNEL = None
 
 client = discord.Client()
 
+
 async def backtask():
 
         global CHANNEL
@@ -20,11 +21,15 @@ async def backtask():
         while(1):
 
             prev=366405
-            res = requests.get('https://www.osmania.ac.in/examination-results.php')
+            res = requests.get('https://www.osmania.ac.in/examination-results.php').text
 
             if len(res)!=prev:
                 prev=len(res)
                 await message.send(f"Results aagaye I guess <@&874319527167545344>")
+            else:
+                await message.send(f"Checking if this works or not <@&874319527167545344>")
+                
+
             
 
             time.sleep(600)
