@@ -2,7 +2,7 @@ import discord
 import requests
 import time
 
-TOKEN="NzI3MDA2MzY2MzIxMDgyNDkx.XvljcA.17yPNj9W9pgzcTAfWi9yXc3AXvQ"
+TOKEN="TOKEN"
 
 client = discord.Client()
 
