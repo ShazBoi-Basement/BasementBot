@@ -6,8 +6,13 @@ import subprocess
 import time
 import io
 
+<<<<<<< HEAD
 TOKEN=str(open("bot.token","r").readline()).replace("\n","")
 prev = 366405
+=======
+TOKEN="TOKEN"
+
+>>>>>>> c249cbdcfff47ce38cf15f5b008751739e1a327d
 client = discord.Client()
 
 
