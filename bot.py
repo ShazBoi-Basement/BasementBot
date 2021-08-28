@@ -26,8 +26,8 @@ async def backtask():
             if len(res)!=prev:
                 prev=len(res)
                 await message.send(f"Results aagaye I guess <@&874319527167545344>")
-            else:
-                await message.send(f"Checking if this works or not <@&874319527167545344>")
+            # else:
+            #     await message.send(f"Checking if this works or not <@&874319527167545344>")
                 
 
             
