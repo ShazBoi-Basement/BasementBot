@@ -125,7 +125,7 @@ async def on_message(message):
         elif len(res)==prev:
             await message.add_reaction("🔎")
             embed = discord.Embed(title="Nope", colour=discord.Colour(0xff6161), description=f"Take it easy. Results nahi aaye {message.author.mention}")
-            embed.set_footer(text="Courtesy of Basser's OU API", icon_url="https://cdn.discordapp.com/attachments/852930321493655563/881447276969619496/731cb6ef4b3004a109fc13e653ef8965.png")
+            embed.set_footer(text="Courtesy of Baseer's OU API", icon_url="https://cdn.discordapp.com/attachments/852930321493655563/881447276969619496/731cb6ef4b3004a109fc13e653ef8965.png")
             await message.channel.send(embed=embed)
 
 client.run(TOKEN)
