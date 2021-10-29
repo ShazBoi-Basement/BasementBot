@@ -17,6 +17,8 @@ prev = 366405
 
 CHANNEL = None
 
+bot = commands.Bot(command_prefix='s.')
+
 client = discord.Client()
 
 def convertName(things):
@@ -131,7 +133,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
 # Master Oogway quotes
-@client.command(name='oof')
+@bot.command(name='oof')
 async def oog(ctx):
     quotes = ['Yesterday is history, tomorrow is a mystery, and today is a gift... that\'s why they call it present','If she cannot make you come, then you go for her mum','If your granny has dentures, it is fine to have adventures','If there is a hole, there is a goal, even if she has a pp ._.']
     b = random.randit(0, len(quotes))
