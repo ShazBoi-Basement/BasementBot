@@ -5,10 +5,12 @@ import time
 import os
 import subprocess
 import time
+import random
 import io
 import pprint
 import pandas as pd
 from tabulate import tabulate
+from discord.ext import commands, tasks
 
 TOKEN=str(open("bot.token","r").readline()).replace("\n","")
 prev = 366405
@@ -127,5 +129,11 @@ async def on_message(message):
             embed = discord.Embed(title="Nope", colour=discord.Colour(0xff6161), description=f"Take it easy. Results nahi aaye {message.author.mention}")
             embed.set_footer(text="Courtesy of Baseer's OU API", icon_url="https://cdn.discordapp.com/attachments/852930321493655563/881447276969619496/731cb6ef4b3004a109fc13e653ef8965.png")
             await message.channel.send(embed=embed)
+
+@client.command(name='oof')
+async def oog(ctx):
+    quotes = ['Yesterday is history, tomorrow is a mystery, and today is a gift... that\'s why they call it present','If she cannot make you come, then you go for her mum','If your granny has dentures, it is fine to have adventures','If there is a hole, there is a goal, even if she has a pp ._.']
+    b = random.randit(0, len(quote))
+    await ctx.send(f'Today\'s Master Oogway Quote - {quotes[b]}')
 
 client.run(TOKEN)
